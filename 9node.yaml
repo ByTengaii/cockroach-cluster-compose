@@ -1,0 +1,119 @@
+version: '3.8'
+
+services:
+  roach1:
+    image: cockroachdb/cockroach:latest-v23.2
+    container_name: roach1
+    command: >
+      start --insecure
+      --join=roach1:26257,roach2:26257,roach3:26257,roach4:26257,roach5:26257,roach6:26257,roach7:26257,roach8:26257,roach9:26257
+    volumes:
+      - roach1-data:/cockroach/cockroach-data
+    ports:
+      - "26257:26257"
+      - "8080:8080"
+    networks:
+      - roachnet
+
+  roach2:
+    image: cockroachdb/cockroach:latest-v23.2
+    container_name: roach2
+    command: >
+      start --insecure
+      --join=roach1:26257,roach2:26257,roach3:26257,roach4:26257,roach5:26257,roach6:26257,roach7:26257,roach8:26257,roach9:26257
+    volumes:
+      - roach2-data:/cockroach/cockroach-data
+    networks:
+      - roachnet
+
+  roach3:
+    image: cockroachdb/cockroach:latest-v23.2
+    container_name: roach3
+    command: >
+      start --insecure
+      --join=roach1:26257,roach2:26257,roach3:26257,roach4:26257,roach5:26257,roach6:26257,roach7:26257,roach8:26257,roach9:26257
+    volumes:
+      - roach3-data:/cockroach/cockroach-data
+    networks:
+      - roachnet
+
+  roach4:
+    image: cockroachdb/cockroach:latest-v23.2
+    container_name: roach4
+    command: >
+      start --insecure
+      --join=roach1:26257,roach2:26257,roach3:26257,roach4:26257,roach5:26257,roach6:26257,roach7:26257,roach8:26257,roach9:26257
+    volumes:
+      - roach4-data:/cockroach/cockroach-data
+    networks:
+      - roachnet
+
+  roach5:
+    image: cockroachdb/cockroach:latest-v23.2
+    container_name: roach5
+    command: >
+      start --insecure
+      --join=roach1:26257,roach2:26257,roach3:26257,roach4:26257,roach5:26257,roach6:26257,roach7:26257,roach8:26257,roach9:26257
+    volumes:
+      - roach5-data:/cockroach/cockroach-data
+    networks:
+      - roachnet
+
+  roach6:
+    image: cockroachdb/cockroach:latest-v23.2
+    container_name: roach6
+    command: >
+      start --insecure
+      --join=roach1:26257,roach2:26257,roach3:26257,roach4:26257,roach5:26257,roach6:26257,roach7:26257,roach8:26257,roach9:26257
+    volumes:
+      - roach6-data:/cockroach/cockroach-data
+    networks:
+      - roachnet
+
+  roach7:
+    image: cockroachdb/cockroach:latest-v23.2
+    container_name: roach7
+    command: >
+      start --insecure
+      --join=roach1:26257,roach2:26257,roach3:26257,roach4:26257,roach5:26257,roach6:26257,roach7:26257,roach8:26257,roach9:26257
+    volumes:
+      - roach7-data:/cockroach/cockroach-data
+    networks:
+      - roachnet
+
+  roach8:
+    image: cockroachdb/cockroach:latest-v23.2
+    container_name: roach8
+    command: >
+      start --insecure
+      --join=roach1:26257,roach2:26257,roach3:26257,roach4:26257,roach5:26257,roach6:26257,roach7:26257,roach8:26257,roach9:26257
+    volumes:
+      - roach8-data:/cockroach/cockroach-data
+    networks:
+      - roachnet
+
+  roach9:
+    image: cockroachdb/cockroach:latest-v23.2
+    container_name: roach9
+    command: >
+      start --insecure
+      --join=roach1:26257,roach2:26257,roach3:26257,roach4:26257,roach5:26257,roach6:26257,roach7:26257,roach8:26257,roach9:26257
+    volumes:
+      - roach9-data:/cockroach/cockroach-data
+    networks:
+      - roachnet
+
+volumes:
+  roach1-data:
+  roach2-data:
+  roach3-data:
+  roach4-data:
+  roach5-data:
+  roach6-data:
+  roach7-data:
+  roach8-data:
+  roach9-data:
+
+networks:
+  roachnet:
+    driver: bridge
